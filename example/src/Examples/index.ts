@@ -1,3 +1,4 @@
+export * from "./Skiappe";
 export * from "./Animation";
 export * from "./API";
 export * from "./Breathe";

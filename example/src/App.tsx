@@ -8,6 +8,7 @@ import { HeaderBackButton } from "@react-navigation/elements";
 import { FiberProvider } from "its-fine";
 
 import {
+  Skiappe,
   AnimationExample,
   API,
   Aurora,
@@ -33,6 +34,7 @@ import { useAssets } from "./Tests/useAssets";
 const linking: LinkingOptions<StackParamList> = {
   config: {
     screens: {
+      Skiappe: "skiappe",
       Home: "",
       Vertices: "vertices",
       API: "api",
@@ -111,6 +113,7 @@ const App = () => {
               header: () => null,
             }}
           />
+          <Stack.Screen name="Skiappe" component={Skiappe} />
           <Stack.Screen name="API" component={API} />
           <Stack.Screen name="Breathe" component={Breathe} />
           <Stack.Screen name="Filters" component={Filters} />
