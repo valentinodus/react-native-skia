@@ -4,6 +4,7 @@ export type StackParamList = {
     path?: string[];
   };
   Skiappe: undefined;
+  Skiappe2: undefined;
   Home: undefined;
   Vertices: undefined;
   API: undefined;

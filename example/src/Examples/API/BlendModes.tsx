@@ -10,6 +10,7 @@ import {
   Text,
   useFont,
   enumKey,
+  Rect,
 } from "@shopify/react-native-skia";
 
 const r = 50;
@@ -67,6 +68,8 @@ export const BlendModes = () => {
   if (font === null) {
     return null;
   }
+
+
   return (
     <Canvas style={{ flex: 1 }}>
       <Group blendMode="multiply">
@@ -93,11 +96,18 @@ export const BlendModes = () => {
               key={blendMode}
               layer
             >
-              <Path path={dst} color="pink" />
+                          <Path path={dst} color="pink" />
               <Group layer={paint}>
                 <Path path={src} color="lightblue" />
               </Group>
               <Text text={blendMode} x={0} y={0} font={font} />
+              {/* <Path path={dst} color="pink" /> */}
+              {/* <Text text={"AAAAAA"} x={40} y={10} font={font} /> */}
+              {/* <Group layer={paint}> */}
+                {/* <Path path={src} color="lightblue" /> */}
+                {/* <Rect x={0} y={0} width={200} height={30} color="red" /> */}
+              {/* </Group> */}
+              {/* <Text text={blendMode} x={0} y={0} font={font} /> */}
             </Group>
           );
         })}

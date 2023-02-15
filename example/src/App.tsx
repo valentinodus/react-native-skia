@@ -9,6 +9,7 @@ import { FiberProvider } from "its-fine";
 
 import {
   Skiappe,
+  Skiappe2,
   AnimationExample,
   API,
   Aurora,
@@ -35,6 +36,7 @@ const linking: LinkingOptions<StackParamList> = {
   config: {
     screens: {
       Skiappe: "skiappe",
+      Skiappe2: "skiappe2",
       Home: "",
       Vertices: "vertices",
       API: "api",
@@ -113,7 +115,13 @@ const App = () => {
               header: () => null,
             }}
           />
-          <Stack.Screen name="Skiappe" component={Skiappe} />
+          <Stack.Screen name="Skiappe" key="Skiappe"             options={{
+              title: "🎨 Skiappe"
+            }}>{(props) => <Skiappe {...props} assets={assets} />}</Stack.Screen>
+
+          <Stack.Screen name="Skiappe2" key="Skiappe2"             options={{
+              title: "🎨 Skiappe2"
+            }}>{(props) => <Skiappe2 {...props} assets={assets} />}</Stack.Screen>
           <Stack.Screen name="API" component={API} />
           <Stack.Screen name="Breathe" component={Breathe} />
           <Stack.Screen name="Filters" component={Filters} />

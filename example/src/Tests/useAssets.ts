@@ -16,6 +16,14 @@ export const useAssets = () => {
     require("./assets/Roboto-Medium.ttf"),
     errorHandler
   );
+  const GorditaRegular = useTypeface(
+    require("./assets/Gordita-Regular.ttf"),
+    errorHandler
+  );
+  const GorditaBold = useTypeface(
+    require("./assets/Gordita-Bold.ttf"),
+    errorHandler
+  );
   const NotoColorEmoji = useTypeface(NotoColorEmojiSrc, errorHandler);
   const NotoSansSCRegular = useTypeface(
     require("./assets/NotoSansSC-Regular.otf"),
@@ -24,8 +32,9 @@ export const useAssets = () => {
   if (error) {
     throw new Error("Failed to load assets: " + error.message);
   }
-  if (!RobotoMedium || !oslo || !NotoColorEmoji || !NotoSansSCRegular) {
+  if (!GorditaRegular || !GorditaBold || !RobotoMedium || !oslo || !NotoColorEmoji || !NotoSansSCRegular) {
     return null;
   }
-  return { RobotoMedium, NotoColorEmoji, NotoSansSCRegular, oslo };
+  
+  return { RobotoMedium, GorditaRegular, GorditaBold, NotoColorEmoji, NotoSansSCRegular, oslo };
 };

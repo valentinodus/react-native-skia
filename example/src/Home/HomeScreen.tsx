@@ -13,6 +13,12 @@ export const HomeScreen = () => {
         testId="skiappe"
       />
       <HomeScreenButton
+        title="Universal SKIApp-e 2"
+        description="An opinionated test"
+        route="Skiappe2"
+        testId="skiappe2"
+      />
+      <HomeScreenButton
         title="API"
         description="API examples"
         route="API"
