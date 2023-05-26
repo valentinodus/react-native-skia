@@ -23,13 +23,13 @@ import {
   rect,
 } from "@shopify/react-native-skia";
 // import { Skia } from "../Skia";
-import { useMemo } from "react";
-// import { Button } from "react-native";
-// import { CoonsPatchMeshGradient } from "../Aurora/components/CoonsPatchMeshGradient";
+import { useMemo, useState } from "react";
+import { Button } from "react-native";
+import { CoonsPatchMeshGradient } from "../Aurora/components/CoonsPatchMeshGradient";
 
-// const MULT = 1;
+const MULT = 1;
 const interval = 10000; // timeEnd - timeStart
-// const duration = 500;
+const duration = 500;
 
 export const Skiappe2 = ({ assets }: Props) => {
   const fontSize = 32;
@@ -48,46 +48,8 @@ export const Skiappe2 = ({ assets }: Props) => {
     return ((clock.current % interval) / interval) * 710;
   }, [clock]);
 
-  //   const rectWidth = useComputedValue(() => {
-  //     return ((clock.current % interval) / interval) * 710;
-  //   }, [clock]);
-
   const SIZE = 1000;
   const r1 = useMemo(() => rect(0, 0, SIZE, 80), [SIZE]);
-
-  const glyphs = font.getGlyphIDs(lineLetterByLetter.x);
-
-  const yFromTop = 50;
-  const xFromLeft = 40;
-  const widths = font.getGlyphWidths(glyphs);
-
-  // let counterWidth = xFromLeft;
-
-  // glyphs = [id, id2, id]
-  // text = [{id, pos}, {id2, pos}]
-
-  // glyphs.reduce((prev, id, i) => {
-  //   const left
-  //   acc += i > 0 ? widths[i - 1] : 0;
-
-  //   const delta = rectWidth.current >= acc ? 30 : 0;
-  //   console.log(rectWidth.current >= acc, acc);
-
-  //   return { id, pos: vec(acc, yFromTop + delta) };
-  // }, [xFromLeft, []]);
-
-  const pos = useComputedValue(() => {
-    let counterWidth = xFromLeft;
-
-    return glyphs.map((id, i) => {
-      counterWidth += i > 0 ? widths[i - 1] : 0;
-
-      // make this fluid SKIAvo
-      const delta = rectWidth.current + 10 >= counterWidth ? 5 : 0;
-
-      return { x: counterWidth, y: yFromTop - delta };
-    });
-  }, [rectWidth]);
 
   return (
     <>
@@ -99,51 +61,19 @@ export const Skiappe2 = ({ assets }: Props) => {
             colors={["#61DAFB", "#fb61da"]}
           />
         </Rect>
-        <Group>
-          {glyphs.map((id, i) => {
-            return (
-              <Glyphs
-                key={i}
-                font={font}
-                x={Selector(pos, (v) => v[i].x)}
-                y={Selector(pos, (v) => v[i].y)}
-                glyphs={[
-                  {
-                    id,
-                    pos: vec(0, 0),
-                  },
-                ]}
-                opacity={0.3}
-                color="white"
-              />
-            );
-          })}
-        </Group>
-        {/* <Text
+        <Text
           text={lineWordByWord.x}
-          x={xFromLeft}
-          y={yFromTop}
+          x={40}
+          y={50}
           font={font}
           opacity={0.3}
           color="white"
-        /> */}
+        />
         <Group layer>
           <Rect x={0} y={0} width={rectWidth} height={300} color="white" />
 
           <Group layer={paint}>
-            {/* <Text text={lineWordByWord.x} x={40} y={50} font={font} /> */}
-
-            <Group>
-              {glyphs.map((id, i) => (
-                <Glyphs
-                  key={i}
-                  font={font}
-                  x={Selector(pos, (v) => v[i].x)}
-                  y={Selector(pos, (v) => v[i].y)}
-                  glyphs={[{ id, pos: vec(0, 0) }]}
-                />
-              ))}
-            </Group>
+            <Text text={lineWordByWord.x} x={40} y={50} font={font} />
           </Group>
         </Group>
       </Canvas>
